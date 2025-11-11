@@ -198,8 +198,12 @@
       <div class="name">SmartPress 3D</div>
       <div style="font-size:12px;color:var(--muted)">NFC • Impresión 3D • Prototipos y series cortas</div>
     </div>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span><span></span><span></span>
+    </div>
   </div>
-  <nav class="nav fade-up">
+
+  <nav class="nav fade-up" id="nav">
     <a href="index.html">Inicio</a>
     <a href="productos.html">Productos</a>
     <a href="servicios.html">Servicios</a>
@@ -207,6 +211,7 @@
     <button class="btn-accent" onclick="location.href='contacto.html'">Encargar</button>
   </nav>
 </header>
+
 
 <main class="container">
   <section class="fade-up">
@@ -241,20 +246,21 @@
   </section>
 </main>
 
-<!-- Footer Moderno con animación -->
-<footer class="fade-up">
+<!-- === FOOTER ANIMADO IGUAL AL DE CONTACTO === -->
+<footer class="footer-scroll fade-up">
   <div class="scroll-container">
     <div class="scroll-content">
-      <span>📱 Síguenos en nuestras redes sociales —</span>
+      <span>📱 Síguenos en nuestras redes sociales — </span>
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="icon" alt="Instagram">
       <span>@smartpress3d</span>
-      <span>📱 Síguenos en nuestras redes sociales —</span>
+      <span>📱 Síguenos en nuestras redes sociales — </span>
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="icon" alt="Instagram">
       <span>@smartpress3d</span>
     </div>
   </div>
 </footer>
 
+<!-- === ANIMACIÓN FADE-UP === -->
 <script>
 document.addEventListener('DOMContentLoaded', function(){
   const obs = new IntersectionObserver((entries)=>{
@@ -265,5 +271,20 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 });
 </script>
+
+<!-- === SCRIPT DEL MENÚ RESPONSIVE === -->
+<script>
+const toggle = document.getElementById("menu-toggle");
+const nav = document.getElementById("nav");
+
+if (toggle && nav) {
+  toggle.addEventListener("click", () => {
+    toggle.classList.toggle("active");
+    nav.classList.toggle("show");
+  });
+}
+</script>
+
 </body>
 </html>
+
