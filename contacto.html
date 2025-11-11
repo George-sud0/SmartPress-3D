@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="css/style.css">
 
 <style>
-/* === ESTILO GLOBAL === */
+/* === ESTILO GLOBAL IGUAL QUE INDEX === */
 body {
   background: radial-gradient(circle at top left, #1b1b1b, #121212);
   color: #f5f5f5;
@@ -16,46 +16,44 @@ body {
   padding: 0;
 }
 
-/* --- HEADER --- */
+/* --- HEADER Y MENÚ --- */
 header.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 32px;
-  backdrop-filter: blur(6px);
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
+  padding: 12px 32px;
+  position: relative;
   z-index: 1000;
+  height: 76px;
 }
 
-/* --- LOGO Y NOMBRE --- */
+/* --- LOGO --- */
 .brand {
   display: flex;
   align-items: center;
   gap: 14px;
 }
+
 .brand img {
   height: 68px;
   width: auto;
-  border-radius: 14px;
+  border-radius: 18px;
   filter: drop-shadow(0 0 8px rgba(255,255,255,0.15));
   transition: transform 0.3s ease, filter 0.3s ease;
 }
+
 .brand img:hover {
   transform: scale(1.05);
   filter: drop-shadow(0 0 10px rgba(255,255,255,0.25));
 }
 
-/* --- NAVEGACIÓN --- */
+/* --- NAV --- */
 .nav {
   display: flex;
-  gap: 18px;
   align-items: center;
-  transition: all 0.3s ease;
+  gap: 18px;
 }
+
 .nav a {
   color: #fff;
   text-decoration: none;
@@ -74,6 +72,7 @@ header.header {
   transition: all 0.25s ease;
   cursor: pointer;
 }
+
 .btn {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -86,6 +85,7 @@ header.header {
   border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-2px);
 }
+
 .btn-accent {
   background: linear-gradient(135deg, #ff5c5c, #ff9f43);
   color: #fff;
@@ -98,52 +98,66 @@ header.header {
   box-shadow: 0 6px 14px rgba(0,0,0,0.3);
 }
 
-/* === MENU HAMBURGUESA === */
+/* === MENU HAMBURGUESA (FUNCIONAL) === */
 .menu-toggle {
   display: none;
   flex-direction: column;
   justify-content: center;
-  gap: 5px;
+  gap: 6px;
   cursor: pointer;
+  position: relative;
+  z-index: 2001;
+  width: 32px;
+  height: 26px;
 }
+
 .menu-toggle div {
-  width: 26px;
+  width: 100%;
   height: 3px;
   background-color: #fff;
   border-radius: 3px;
   transition: all 0.3s ease;
+  transform-origin: center;
 }
+
+/* Animación de la X */
 .menu-toggle.active div:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(45deg) translate(5px, 6px);
 }
 .menu-toggle.active div:nth-child(2) {
   opacity: 0;
 }
 .menu-toggle.active div:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+  transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* === RESPONSIVE === */
+/* NAV RESPONSIVE */
 @media (max-width: 850px) {
   .menu-toggle { display: flex; }
   .nav {
     display: none;
     flex-direction: column;
     align-items: center;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.95);
     position: absolute;
     top: 76px;
     right: 0;
     left: 0;
     padding: 20px 0;
     border-top: 1px solid rgba(255,255,255,0.1);
+    animation: fadeMenu 0.3s ease;
   }
   .nav.show { display: flex; }
 }
 
+@keyframes fadeMenu {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* --- CONTENEDOR --- */
 .container {
-  padding: 120px 20px 40px;
+  padding: 40px 20px;
   max-width: 1000px;
   margin: auto;
 }
@@ -207,6 +221,7 @@ form textarea {
   filter: invert(1);
   vertical-align: middle;
 }
+
 @keyframes scrollRight {
   from { transform: translateX(-100%); }
   to { transform: translateX(100%); }
@@ -224,16 +239,17 @@ form textarea {
     <img src="logo.png" alt="SmartPress Logo">
     <div>
       <div class="name">SmartPress 3D</div>
-      <div style="font-size:12px;color:var(--muted)">NFC • Impresión 3D • Prototipos y series cortas</div>
+      <div style="font-size:12px;color:var(--muted)">
+        NFC • Impresión 3D • Prototipos y series cortas
+      </div>
     </div>
   </div>
 
-  <!-- Botón hamburguesa -->
+  <!-- 🔹 BOTÓN HAMBURGUESA -->
   <div id="menu-toggle" class="menu-toggle">
     <div></div><div></div><div></div>
   </div>
 
-  <!-- Navegación -->
   <nav id="nav" class="nav fade-up">
     <a href="index.html">Inicio</a>
     <a href="productos.html">Productos</a>
@@ -250,13 +266,12 @@ form textarea {
     <p class="p-muted">Cuéntanos tu idea (NFC, 3D o ambos) y te responderemos con presupuesto y tiempos.</p>
 
     <form id="contact-form" style="max-width:900px;margin:0 auto;">
-      <div class="form">
-        <input required placeholder="Nombre / Empresa" name="nombre">
-        <input required type="email" placeholder="Correo electrónico" name="email">
-        <input placeholder="Teléfono (opcional)" name="telefono">
-        <input placeholder="Producto principal (ej: llavero NFC / pieza 3D)" name="producto">
-        <textarea placeholder="Describe tu proyecto: materiales, cantidad, uso, fecha" name="mensaje"></textarea>
-      </div>
+      <input required placeholder="Nombre / Empresa" name="nombre">
+      <input required type="email" placeholder="Correo electrónico" name="email">
+      <input placeholder="Teléfono (opcional)" name="telefono">
+      <input placeholder="Producto principal (ej: llavero NFC / pieza 3D)" name="producto">
+      <textarea placeholder="Describe tu proyecto: materiales, cantidad, uso, fecha" name="mensaje"></textarea>
+
       <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:14px">
         <button class="btn" type="button" onclick="location.href='mailto:contacto@smartpress.mx'">Escribir a correo</button>
         <button class="btn-accent" type="submit">Enviar solicitud</button>
@@ -265,7 +280,6 @@ form textarea {
   </section>
 </main>
 
-<!-- Footer -->
 <footer class="footer-scroll fade-up">
   <div class="scroll-container">
     <div class="scroll-content">
@@ -289,12 +303,20 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 });
 
-// menú hamburguesa
+// 🔹 Toggle del menú responsive
 const toggle = document.getElementById("menu-toggle");
 const nav = document.getElementById("nav");
 toggle.addEventListener("click", () => {
   toggle.classList.toggle("active");
   nav.classList.toggle("show");
+});
+
+// 🔹 Cierra el menú al seleccionar una opción
+document.querySelectorAll('.nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    toggle.classList.remove('active');
+    nav.classList.remove('show');
+  });
 });
 </script>
 
@@ -320,9 +342,9 @@ document.getElementById("contact-form").addEventListener("submit", async (e) => 
     .insert([{ nombre, email, telefono, producto, mensaje }]);
 
   if (error) {
-    alert(" Uy parece que tuvimos un error (Favor de intentar de nuevo).: " + error.message);
+    alert("Uy, parece que hubo un error. Favor de intentar de nuevo: " + error.message);
   } else {
-    alert("Nos estaremos contactando contigo dentro de los próximos 30 min. a 1 hora.");
+    alert("Nos estaremos contactando contigo dentro de los próximos 30 min a 1 hora.");
     form.reset();
   }
 });
