@@ -21,6 +21,8 @@ header.header {
   justify-content: space-between;
   align-items: center;
   padding: 16px 32px;
+  position: relative;
+  z-index: 1000;
 }
 
 /* --- LOGO MODERNO TIPO APPLE --- */
@@ -31,8 +33,9 @@ header.header {
 }
 
 .brand img {
-  height: 68px; /* 🔥 Más grande */
+  height: 68px;
   width: auto;
+  border-radius: 16px; /* 🔹 esquinas redondeadas */
   filter: drop-shadow(0 0 8px rgba(255,255,255,0.15));
   transition: transform 0.3s ease, filter 0.3s ease;
 }
@@ -106,6 +109,64 @@ header.header {
 }
 .nav a:hover {
   color: #ffb366;
+}
+
+/* === BOTÓN MENÚ RESPONSIVE === */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 2001;
+}
+.menu-toggle div {
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+.menu-toggle.active div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active div:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active div:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* === NAV RESPONSIVE === */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+  nav.nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: rgba(20,20,20,0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    padding: 18px 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    animation: fadeInMenu 0.3s ease forwards;
+  }
+  nav.nav.show {
+    display: flex;
+  }
+  nav.nav a {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+}
+@keyframes fadeInMenu {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* --- Formulario --- */
@@ -189,12 +250,11 @@ form textarea {
     </div>
   </div>
 
-  <!-- 🔹 Aquí agregas el botón de menú para móviles -->
+  <!-- 🔹 Botón menú para móviles -->
   <div id="menu-toggle" class="menu-toggle">
     <div></div><div></div><div></div>
   </div>
 
-  <!-- 🔹 Y aquí empieza tu navegación (asegúrate de que tenga id="nav") -->
   <nav id="nav" class="nav fade-up">
     <a href="index.html">Inicio</a>
     <a href="productos.html">Productos</a>
@@ -204,7 +264,6 @@ form textarea {
     <button class="btn-accent" onclick="location.href='contacto.html'">Encargar</button>
   </nav>
 </header>
-
 
 <main class="container fade-up">
   <section>
@@ -227,28 +286,7 @@ form textarea {
   </section>
 </main>
 
-<!-- Footer animado -->
-<footer class="footer-scroll fade-up">
-  <div class="scroll-container">
-    <div class="scroll-content">
-      <span>📱 Síguenos en nuestras redes sociales — </span>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="icon" alt="Instagram">
-      <span>@smartpress3d</span>
-      <span>📱 Síguenos en nuestras redes sociales — </span>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="icon" alt="Instagram">
-      <span>@smartpress3d</span>
-    </div>
-  </div>
-</footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting) e.target.classList.add('show');
-    });
-  }, {threshold: 0.1});
-  document.querySelectorAll('.fad<!-- === FOOTER ANIMADO IGUAL AL DE INDEX === -->
+<!-- === FOOTER ANIMADO IGUAL AL DE INDEX === -->
 <footer class="footer-scroll fade-up">
   <div class="scroll-container">
     <div class="scroll-content">
@@ -274,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 </script>
 
-<!-- === MENÚ RESPONSIVE (igual al index) === -->
+<!-- === MENÚ RESPONSIVE === -->
 <script>
 const toggle = document.getElementById("menu-toggle");
 const nav = document.getElementById("nav");
@@ -308,9 +346,9 @@ document.getElementById("contact-form").addEventListener("submit", async (e) => 
     .insert([{ nombre, email, telefono, producto, mensaje }]);
 
   if (error) {
-    alert(" Uy parece que tuvimos un error (Favor de intentar de nuevo).: " + error.message);
+    alert("Uy, parece que hubo un error. Favor de intentar de nuevo: " + error.message);
   } else {
-    alert("Nos estaremos contactando contigo dentro de los próximos 30 min. a 1 hora.");
+    alert("Nos estaremos contactando contigo dentro de los próximos 30 min a 1 hora.");
     form.reset();
   }
 });
@@ -318,4 +356,3 @@ document.getElementById("contact-form").addEventListener("submit", async (e) => 
 
 </body>
 </html>
-
