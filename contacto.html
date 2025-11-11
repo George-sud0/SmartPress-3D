@@ -188,7 +188,14 @@ form textarea {
       <div style="font-size:12px;color:var(--muted)">NFC • Impresión 3D • Prototipos y series cortas</div>
     </div>
   </div>
-  <nav class="nav fade-up">
+
+  <!-- 🔹 Aquí agregas el botón de menú para móviles -->
+  <div id="menu-toggle" class="menu-toggle">
+    <div></div><div></div><div></div>
+  </div>
+
+  <!-- 🔹 Y aquí empieza tu navegación (asegúrate de que tenga id="nav") -->
+  <nav id="nav" class="nav fade-up">
     <a href="index.html">Inicio</a>
     <a href="productos.html">Productos</a>
     <a href="servicios.html">Servicios</a>
@@ -197,6 +204,7 @@ form textarea {
     <button class="btn-accent" onclick="location.href='contacto.html'">Encargar</button>
   </nav>
 </header>
+
 
 <main class="container fade-up">
   <section>
@@ -240,10 +248,45 @@ document.addEventListener('DOMContentLoaded', function(){
       if(e.isIntersecting) e.target.classList.add('show');
     });
   }, {threshold: 0.1});
+  document.querySelectorAll('.fad<!-- === FOOTER ANIMADO IGUAL AL DE INDEX === -->
+<footer class="footer-scroll fade-up">
+  <div class="scroll-container">
+    <div class="scroll-content">
+      <span>📱 Síguenos en nuestras redes sociales — </span>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="icon" alt="Instagram">
+      <span>@smartpress3d</span>
+      <span>📱 Síguenos en nuestras redes sociales — </span>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="icon" alt="Instagram">
+      <span>@smartpress3d</span>
+    </div>
+  </div>
+</footer>
+
+<!-- === ANIMACIÓN FADE-UP === -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) e.target.classList.add('show');
+    });
+  }, {threshold: 0.1});
   document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 });
 </script>
 
+<!-- === MENÚ RESPONSIVE (igual al index) === -->
+<script>
+const toggle = document.getElementById("menu-toggle");
+const nav = document.getElementById("nav");
+if (toggle && nav) {
+  toggle.addEventListener("click", () => {
+    toggle.classList.toggle("active");
+    nav.classList.toggle("show");
+  });
+}
+</script>
+
+<!-- === FORMULARIO SUPABASE === -->
 <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 <script>
 const SUPABASE_URL = "https://pbglzegtqenndqbsjjjf.supabase.co";
@@ -267,10 +310,12 @@ document.getElementById("contact-form").addEventListener("submit", async (e) => 
   if (error) {
     alert(" Uy parece que tuvimos un error (Favor de intentar de nuevo).: " + error.message);
   } else {
-    alert("Nos estaremos contactando contigo dentro de los proximos 30 min. a 1 hora.");
+    alert("Nos estaremos contactando contigo dentro de los próximos 30 min. a 1 hora.");
     form.reset();
   }
 });
 </script>
+
 </body>
 </html>
+
