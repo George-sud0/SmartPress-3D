@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SmartPress 3D — Contacto</title>
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* === ESTILO GLOBAL (como el index) === */
+body {
+  background: radial-gradient(circle at top left, #1b1b1b, #121212);
+  color: #f5f5f5;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+}
+
+/* --- LOGO MODERNO TIPO APPLE --- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand img {
+  height: 68px; /* 🔥 Más grande */
+  width: auto;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.15));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.brand img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.25));
+}
+
+/* --- Contenedor --- */
+.container {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* --- Animación suave al aparecer --- */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-up:nth-child(1) { transition-delay: 0.1s; }
+.fade-up:nth-child(2) { transition-delay: 0.2s; }
+.fade-up:nth-child(3) { transition-delay: 0.3s; }
+.fade-up:nth-child(4) { transition-delay: 0.4s; }
+
+/* --- Botones --- */
+.btn, .btn-accent {
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 20px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.btn {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+.btn-accent {
+  background: linear-gradient(135deg, #ff5c5c, #ff9f43);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+.btn-accent:hover {
+  background: linear-gradient(135deg, #ff7a7a, #ffb366);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
+
+/* --- Navegación --- */
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-right: 16px;
+  transition: color 0.25s;
+}
+.nav a:hover {
+  color: #ffb366;
+}
+
+/* --- Formulario --- */
+form input, form textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  color: #fff;
+  padding: 12px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  transition: border 0.2s ease;
+}
+form input:focus, form textarea:focus {
+  border-color: #ff9f43;
+  outline: none;
+}
+form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* --- Footer animado (Instagram) --- */
+.footer-scroll {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #0a0a0a;
+  color: white;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 10px 0;
+}
+.scroll-container {
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.scroll-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 17px;
+  font-weight: 500;
+  animation: scrollRight 25s linear infinite;
+}
+.scroll-content span {
+  background: linear-gradient(90deg, #fff, #999, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200%;
+  animation: shimmer 4s linear infinite;
+}
+.icon {
+  width: 22px;
+  height: 22px;
+  filter: invert(1);
+  vertical-align: middle;
+}
+
+@keyframes scrollRight {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
+}
+</style>
+</head>
+
+<body>
+<header class="header">
+  <div class="brand fade-up">
+    <img src="logo.png" alt="SmartPress Logo">
+    <div>
+      <div class="name">SmartPress 3D</div>
+      <div style="font-size:12px;color:var(--muted)">NFC • Impresión 3D • Prototipos y series cortas</div>
+    </div>
+  </div>
+  <nav class="nav fade-up">
+    <a href="index.html">Inicio</a>
+    <a href="productos.html">Productos</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="galeria.html">Galería</a>
+    <a href="contacto.html">Contacto</a>
+    <button class="btn-accent" onclick="location.href='contacto.html'">Encargar</button>
+  </nav>
+</header>
+
+<main class="container fade-up">
+  <section>
+    <h2>Contacto & Encargos</h2>
+    <p class="p-muted">Cuéntanos tu idea (NFC, 3D o ambos) y te responderemos con presupuesto y tiempos.</p>
+
+    <form id="contact-form" style="max-width:900px;margin:0 auto;">
+      <div class="form">
+        <input required placeholder="Nombre / Empresa" name="nombre">
+        <input required type="email" placeholder="Correo electrónico" name="email">
+        <input placeholder="Teléfono (opcional)" name="telefono">
+        <input placeholder="Producto principal (ej: llavero NFC / pieza 3D)" name="producto">
+        <textarea placeholder="Describe tu proyecto: materiales, cantidad, uso, fecha" name="mensaje"></textarea>
+      </div>
+      <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:14px">
+        <button class="btn" type="button" onclick="location.href='mailto:contacto@smartpress.mx'">Escribir a correo</button>
+        <button class="btn-accent" type="submit">Enviar solicitud</button>
+      </div>
+    </form>
+  </section>
+</main>
+
+<!-- Footer animado -->
+<footer class="footer-scroll fade-up">
+  <div class="scroll-container">
+    <div class="scroll-content">
+      <span>📱 Síguenos en nuestras redes sociales — </span>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="icon" alt="Instagram">
+      <span>@smartpress3d</span>
+      <span>📱 Síguenos en nuestras redes sociales — </span>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="icon" alt="Instagram">
+      <span>@smartpress3d</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) e.target.classList.add('show');
+    });
+  }, {threshold: 0.1});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+});
+</script>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "https://pbglzegtqenndqbsjjjf.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBiZ2x6ZWd0cWVubmRxYnNqampmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI3MzUwOTMsImV4cCI6MjA3ODMxMTA5M30.GMH5D_YWDFSGrXDFeZ_a4OkZ-zk0mJx95ciEL98q894";
+
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+document.getElementById("contact-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const nombre = form.nombre.value;
+  const email = form.email.value;
+  const telefono = form.telefono.value;
+  const producto = form.producto.value;
+  const mensaje = form.mensaje.value;
+
+  const { error } = await supabaseClient
+    .from("usuarios")
+    .insert([{ nombre, email, telefono, producto, mensaje }]);
+
+  if (error) {
+    alert(" Uy parece que tuvimos un error (Favor de intentar de nuevo).: " + error.message);
+  } else {
+    alert("Nos estaremos contactando contigo dentro de los proximos 30 min. a 1 hora.");
+    form.reset();
+  }
+});
+</script>
+</body>
+</html>
