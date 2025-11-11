@@ -425,3 +425,60 @@ footer.fade-up {
     font-size: 15px;
   }
 }
+/* === MENÚ RESPONSIVE === */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  gap: 4px;
+  margin-left: auto;
+}
+.menu-toggle span {
+  width: 26px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animación del icono al abrir */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(6px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-6px);
+}
+
+/* Menú oculto en móvil */
+.nav {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: rgba(10,10,10,0.95);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 16px 0;
+    position: absolute;
+    top: 76px;
+    left: 0;
+  }
+
+  .nav.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
