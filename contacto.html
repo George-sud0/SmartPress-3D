@@ -7,59 +7,66 @@
 <link rel="stylesheet" href="css/style.css">
 
 <style>
-/* === HEADER IGUAL AL INDEX === */
-.header {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 76px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 36px;
-  backdrop-filter: blur(6px);
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
-  z-index: 50;
+/* === ESTILO GLOBAL === */
+body {
+  background: radial-gradient(circle at top left, #1b1b1b, #121212);
+  color: #f5f5f5;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-/* === LOGO IGUAL AL INDEX === */
+/* --- HEADER --- */
+header.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* --- LOGO Y NOMBRE --- */
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 .brand img {
-  width: 56px;
-  height: 56px;
+  height: 68px;
+  width: auto;
   border-radius: 14px;
-  object-fit: cover;
-  transition: transform .3s ease;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.15));
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 .brand img:hover {
   transform: scale(1.05);
-}
-.brand .name {
-  font-weight: 800;
-  letter-spacing: 0.2px;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.25));
 }
 
-/* === NAV MENU === */
+/* --- NAVEGACIÓN --- */
 .nav {
   display: flex;
   gap: 18px;
   align-items: center;
+  transition: all 0.3s ease;
 }
 .nav a {
-  color: var(--muted);
-  font-weight: 600;
+  color: #fff;
   text-decoration: none;
+  font-weight: 500;
+  transition: color 0.25s;
 }
 .nav a:hover {
-  color: var(--accent);
+  color: #ffb366;
 }
 
-/* === BOTONES === */
+/* --- BOTONES --- */
 .btn, .btn-accent {
   font-weight: 600;
   border-radius: 8px;
@@ -71,27 +78,77 @@
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: #fff;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 .btn:hover {
   background-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
 }
 .btn-accent {
   background: linear-gradient(135deg, #ff5c5c, #ff9f43);
   color: #fff;
   border: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 .btn-accent:hover {
   background: linear-gradient(135deg, #ff7a7a, #ffb366);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
 }
 
-/* === CONTENIDO === */
+/* === MENU HAMBURGUESA === */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+}
+.menu-toggle div {
+  width: 26px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+.menu-toggle.active div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active div:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active div:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 850px) {
+  .menu-toggle { display: flex; }
+  .nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0,0,0,0.9);
+    position: absolute;
+    top: 76px;
+    right: 0;
+    left: 0;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .nav.show { display: flex; }
+}
+
+/* --- CONTENEDOR --- */
 .container {
-  max-width: var(--maxw);
-  margin: 120px auto 80px;
-  padding: 0 24px;
+  padding: 120px 20px 40px;
+  max-width: 1000px;
+  margin: auto;
 }
 
-/* === FORMULARIO === */
+/* --- FORMULARIO --- */
 form input, form textarea {
   width: 100%;
   background: rgba(255,255,255,0.05);
@@ -101,6 +158,7 @@ form input, form textarea {
   padding: 12px;
   margin-bottom: 12px;
   font-size: 15px;
+  transition: border 0.2s ease;
 }
 form input:focus, form textarea:focus {
   border-color: #ff9f43;
@@ -111,7 +169,7 @@ form textarea {
   resize: vertical;
 }
 
-/* === FOOTER === */
+/* --- FOOTER --- */
 .footer-scroll {
   position: relative;
   width: 100%;
@@ -157,21 +215,6 @@ form textarea {
   0% { background-position: -200px 0; }
   100% { background-position: 200px 0; }
 }
-
-/* === ANIMACIÓN === */
-.fade-up {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.fade-up.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-.fade-up:nth-child(1) { transition-delay: 0.1s; }
-.fade-up:nth-child(2) { transition-delay: 0.2s; }
-.fade-up:nth-child(3) { transition-delay: 0.3s; }
-.fade-up:nth-child(4) { transition-delay: 0.4s; }
 </style>
 </head>
 
@@ -184,7 +227,14 @@ form textarea {
       <div style="font-size:12px;color:var(--muted)">NFC • Impresión 3D • Prototipos y series cortas</div>
     </div>
   </div>
-  <nav class="nav fade-up">
+
+  <!-- Botón hamburguesa -->
+  <div id="menu-toggle" class="menu-toggle">
+    <div></div><div></div><div></div>
+  </div>
+
+  <!-- Navegación -->
+  <nav id="nav" class="nav fade-up">
     <a href="index.html">Inicio</a>
     <a href="productos.html">Productos</a>
     <a href="servicios.html">Servicios</a>
@@ -215,6 +265,7 @@ form textarea {
   </section>
 </main>
 
+<!-- Footer -->
 <footer class="footer-scroll fade-up">
   <div class="scroll-container">
     <div class="scroll-content">
@@ -237,12 +288,22 @@ document.addEventListener('DOMContentLoaded', function(){
   }, {threshold: 0.1});
   document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 });
+
+// menú hamburguesa
+const toggle = document.getElementById("menu-toggle");
+const nav = document.getElementById("nav");
+toggle.addEventListener("click", () => {
+  toggle.classList.toggle("active");
+  nav.classList.toggle("show");
+});
 </script>
 
+<!-- Supabase -->
 <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 <script>
 const SUPABASE_URL = "https://pbglzegtqenndqbsjjjf.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBiZ2x6ZWd0cWVubmRxYnNqampmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI3MzUwOTMsImV4cCI6MjA3ODMxMTA5M30.GMH5D_YWDFSGrXDFeZ_a4OkZ-zk0mJx95ciEL98q894";
+
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 document.getElementById("contact-form").addEventListener("submit", async (e) => {
@@ -254,11 +315,14 @@ document.getElementById("contact-form").addEventListener("submit", async (e) => 
   const producto = form.producto.value;
   const mensaje = form.mensaje.value;
 
-  const { error } = await supabaseClient.from("usuarios").insert([{ nombre, email, telefono, producto, mensaje }]);
+  const { error } = await supabaseClient
+    .from("usuarios")
+    .insert([{ nombre, email, telefono, producto, mensaje }]);
+
   if (error) {
-    alert("Error al enviar. Intenta de nuevo: " + error.message);
+    alert(" Uy parece que tuvimos un error (Favor de intentar de nuevo).: " + error.message);
   } else {
-    alert("¡Mensaje enviado con éxito! Te contactaremos pronto.");
+    alert("Nos estaremos contactando contigo dentro de los próximos 30 min. a 1 hora.");
     form.reset();
   }
 });
