@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="css/style.css">
 
 <style>
-/* === ESTILO GLOBAL (como el index) === */
+/* === ESTILO GLOBAL === */
 body {
   background: radial-gradient(circle at top left, #1b1b1b, #121212);
   color: #f5f5f5;
@@ -16,58 +16,109 @@ body {
   padding: 0;
 }
 
+/* --- HEADER (alineado tipo Apple) --- */
 header.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 32px;
+  padding: 12px 28px;
+  height: 76px;
   position: relative;
   z-index: 1000;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
 }
 
-/* --- LOGO MODERNO TIPO APPLE --- */
+/* --- LOGO --- */
 .brand {
   display: flex;
   align-items: center;
   gap: 14px;
 }
-
 .brand img {
   height: 68px;
   width: auto;
-  border-radius: 16px; /* 🔹 esquinas redondeadas */
+  border-radius: 14px;
   filter: drop-shadow(0 0 8px rgba(255,255,255,0.15));
   transition: transform 0.3s ease, filter 0.3s ease;
 }
-
 .brand img:hover {
   transform: scale(1.05);
   filter: drop-shadow(0 0 10px rgba(255,255,255,0.25));
 }
 
-/* --- Contenedor --- */
+/* --- MENÚ RESPONSIVE --- */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  z-index: 2001;
+  margin-left: 12px;
+}
+.menu-toggle div {
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+.menu-toggle.active div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active div:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active div:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* --- NAV --- */
+.nav {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.25s;
+}
+.nav a:hover {
+  color: #ffb366;
+}
+
+/* --- FORMULARIO --- */
 .container {
   padding: 40px 20px;
   max-width: 1000px;
   margin: auto;
 }
-
-/* --- Animación suave al aparecer --- */
-.fade-up {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+form input, form textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  color: #fff;
+  padding: 12px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  transition: border 0.2s ease;
 }
-.fade-up.show {
-  opacity: 1;
-  transform: translateY(0);
+form input:focus, form textarea:focus {
+  border-color: #ff9f43;
+  outline: none;
 }
-.fade-up:nth-child(1) { transition-delay: 0.1s; }
-.fade-up:nth-child(2) { transition-delay: 0.2s; }
-.fade-up:nth-child(3) { transition-delay: 0.3s; }
-.fade-up:nth-child(4) { transition-delay: 0.4s; }
+form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
 
-/* --- Botones --- */
+/* --- BOTONES --- */
 .btn, .btn-accent {
   font-weight: 600;
   border-radius: 8px;
@@ -99,98 +150,7 @@ header.header {
   box-shadow: 0 6px 14px rgba(0,0,0,0.3);
 }
 
-/* --- Navegación --- */
-.nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  margin-right: 16px;
-  transition: color 0.25s;
-}
-.nav a:hover {
-  color: #ffb366;
-}
-
-/* === BOTÓN MENÚ RESPONSIVE === */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 26px;
-  height: 20px;
-  cursor: pointer;
-  z-index: 2001;
-}
-.menu-toggle div {
-  height: 3px;
-  width: 100%;
-  background-color: #fff;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-.menu-toggle.active div:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.menu-toggle.active div:nth-child(2) {
-  opacity: 0;
-}
-.menu-toggle.active div:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* === NAV RESPONSIVE === */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-  }
-  nav.nav {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    background: rgba(20,20,20,0.95);
-    backdrop-filter: blur(12px);
-    border-radius: 12px;
-    padding: 18px 24px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    animation: fadeInMenu 0.3s ease forwards;
-  }
-  nav.nav.show {
-    display: flex;
-  }
-  nav.nav a {
-    margin: 10px 0;
-    font-size: 16px;
-  }
-}
-@keyframes fadeInMenu {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- Formulario --- */
-form input, form textarea {
-  width: 100%;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 8px;
-  color: #fff;
-  padding: 12px;
-  margin-bottom: 12px;
-  font-size: 15px;
-  transition: border 0.2s ease;
-}
-form input:focus, form textarea:focus {
-  border-color: #ff9f43;
-  outline: none;
-}
-form textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
-/* --- Footer animado (Instagram) --- */
+/* --- FOOTER ANIMADO --- */
 .footer-scroll {
   position: relative;
   width: 100%;
@@ -228,7 +188,6 @@ form textarea {
   filter: invert(1);
   vertical-align: middle;
 }
-
 @keyframes scrollRight {
   from { transform: translateX(-100%); }
   to { transform: translateX(100%); }
@@ -236,6 +195,36 @@ form textarea {
 @keyframes shimmer {
   0% { background-position: -200px 0; }
   100% { background-position: 200px 0; }
+}
+
+/* --- ANIMACIONES --- */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .menu-toggle { display: flex; }
+  .nav {
+    position: absolute;
+    top: 76px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(10px);
+    padding: 20px 0;
+    display: none;
+  }
+  .nav.show {
+    display: flex;
+  }
 }
 </style>
 </head>
@@ -250,7 +239,7 @@ form textarea {
     </div>
   </div>
 
-  <!-- 🔹 Botón menú para móviles -->
+  <!-- Botón menú hamburguesa -->
   <div id="menu-toggle" class="menu-toggle">
     <div></div><div></div><div></div>
   </div>
@@ -286,7 +275,7 @@ form textarea {
   </section>
 </main>
 
-<!-- === FOOTER ANIMADO IGUAL AL DE INDEX === -->
+<!-- === FOOTER ANIMADO === -->
 <footer class="footer-scroll fade-up">
   <div class="scroll-container">
     <div class="scroll-content">
@@ -300,8 +289,8 @@ form textarea {
   </div>
 </footer>
 
-<!-- === ANIMACIÓN FADE-UP === -->
 <script>
+/* === FADE-UP === */
 document.addEventListener('DOMContentLoaded', function(){
   const obs = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
@@ -310,21 +299,16 @@ document.addEventListener('DOMContentLoaded', function(){
   }, {threshold: 0.1});
   document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 });
-</script>
 
-<!-- === MENÚ RESPONSIVE === -->
-<script>
+/* === MENÚ RESPONSIVE === */
 const toggle = document.getElementById("menu-toggle");
 const nav = document.getElementById("nav");
-if (toggle && nav) {
-  toggle.addEventListener("click", () => {
-    toggle.classList.toggle("active");
-    nav.classList.toggle("show");
-  });
-}
+toggle.addEventListener("click", () => {
+  toggle.classList.toggle("active");
+  nav.classList.toggle("show");
+});
 </script>
 
-<!-- === FORMULARIO SUPABASE === -->
 <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 <script>
 const SUPABASE_URL = "https://pbglzegtqenndqbsjjjf.supabase.co";
@@ -353,6 +337,5 @@ document.getElementById("contact-form").addEventListener("submit", async (e) => 
   }
 });
 </script>
-
 </body>
 </html>
