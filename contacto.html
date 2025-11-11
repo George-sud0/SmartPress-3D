@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="css/style.css">
 
 <style>
-/* === ESTILO GLOBAL === */
+/* === ESTILO GLOBAL COMO INDEX === */
 body {
   background: radial-gradient(circle at top left, #1b1b1b, #121212);
   color: #f5f5f5;
@@ -16,20 +16,23 @@ body {
   padding: 0;
 }
 
-/* --- HEADER (alineado tipo Apple) --- */
+/* --- HEADER IGUAL AL INDEX --- */
 header.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 28px;
-  height: 76px;
-  position: relative;
-  z-index: 1000;
+  padding: 18px 40px;
   backdrop-filter: blur(6px);
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 76px;
+  z-index: 50;
 }
 
-/* --- LOGO --- */
+/* --- LOGO Y TEXTO --- */
 .brand {
   display: flex;
   align-items: center;
@@ -46,41 +49,16 @@ header.header {
   transform: scale(1.05);
   filter: drop-shadow(0 0 10px rgba(255,255,255,0.25));
 }
-
-/* --- MENÚ RESPONSIVE --- */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  z-index: 2001;
-  margin-left: 12px;
-}
-.menu-toggle div {
-  height: 3px;
-  width: 100%;
-  background-color: #fff;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-.menu-toggle.active div:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.menu-toggle.active div:nth-child(2) {
-  opacity: 0;
-}
-.menu-toggle.active div:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+.name {
+  font-size: 20px;
+  font-weight: 600;
 }
 
-/* --- NAV --- */
+/* --- MENÚ (idéntico al index, al lado derecho) --- */
 .nav {
   display: flex;
-  gap: 18px;
   align-items: center;
+  gap: 18px;
 }
 .nav a {
   color: #fff;
@@ -92,33 +70,7 @@ header.header {
   color: #ffb366;
 }
 
-/* --- FORMULARIO --- */
-.container {
-  padding: 40px 20px;
-  max-width: 1000px;
-  margin: auto;
-}
-form input, form textarea {
-  width: 100%;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 8px;
-  color: #fff;
-  padding: 12px;
-  margin-bottom: 12px;
-  font-size: 15px;
-  transition: border 0.2s ease;
-}
-form input:focus, form textarea:focus {
-  border-color: #ff9f43;
-  outline: none;
-}
-form textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
-/* --- BOTONES --- */
+/* --- BOTONES IGUALES AL INDEX --- */
 .btn, .btn-accent {
   font-weight: 600;
   border-radius: 8px;
@@ -150,7 +102,35 @@ form textarea {
   box-shadow: 0 6px 14px rgba(0,0,0,0.3);
 }
 
-/* --- FOOTER ANIMADO --- */
+/* --- CONTENIDO --- */
+.container {
+  padding: 120px 20px 40px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* --- FORMULARIO --- */
+form input, form textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  color: #fff;
+  padding: 12px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  transition: border 0.2s ease;
+}
+form input:focus, form textarea:focus {
+  border-color: #ff9f43;
+  outline: none;
+}
+form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* --- FOOTER ANIMADO IGUAL AL INDEX --- */
 .footer-scroll {
   position: relative;
   width: 100%;
@@ -207,25 +187,10 @@ form textarea {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* --- RESPONSIVE --- */
-@media (max-width: 900px) {
-  .menu-toggle { display: flex; }
-  .nav {
-    position: absolute;
-    top: 76px;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    background: rgba(0,0,0,0.9);
-    backdrop-filter: blur(10px);
-    padding: 20px 0;
-    display: none;
-  }
-  .nav.show {
-    display: flex;
-  }
-}
+.fade-up:nth-child(1) { transition-delay: 0.1s; }
+.fade-up:nth-child(2) { transition-delay: 0.2s; }
+.fade-up:nth-child(3) { transition-delay: 0.3s; }
+.fade-up:nth-child(4) { transition-delay: 0.4s; }
 </style>
 </head>
 
@@ -238,13 +203,7 @@ form textarea {
       <div style="font-size:12px;color:var(--muted)">NFC • Impresión 3D • Prototipos y series cortas</div>
     </div>
   </div>
-
-  <!-- Botón menú hamburguesa -->
-  <div id="menu-toggle" class="menu-toggle">
-    <div></div><div></div><div></div>
-  </div>
-
-  <nav id="nav" class="nav fade-up">
+  <nav class="nav fade-up">
     <a href="index.html">Inicio</a>
     <a href="productos.html">Productos</a>
     <a href="servicios.html">Servicios</a>
@@ -275,7 +234,7 @@ form textarea {
   </section>
 </main>
 
-<!-- === FOOTER ANIMADO === -->
+<!-- === FOOTER IGUAL AL INDEX === -->
 <footer class="footer-scroll fade-up">
   <div class="scroll-container">
     <div class="scroll-content">
@@ -290,7 +249,7 @@ form textarea {
 </footer>
 
 <script>
-/* === FADE-UP === */
+/* === ANIMACIÓN FADE-UP === */
 document.addEventListener('DOMContentLoaded', function(){
   const obs = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
@@ -298,14 +257,6 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }, {threshold: 0.1});
   document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
-});
-
-/* === MENÚ RESPONSIVE === */
-const toggle = document.getElementById("menu-toggle");
-const nav = document.getElementById("nav");
-toggle.addEventListener("click", () => {
-  toggle.classList.toggle("active");
-  nav.classList.toggle("show");
 });
 </script>
 
