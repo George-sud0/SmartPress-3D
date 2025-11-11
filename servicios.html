@@ -211,8 +211,8 @@
   </section>
 </main>
 
-<!-- Footer animado -->
-<footer class="fade-up">
+<!-- === FOOTER ANIMADO IGUAL AL DE CONTACTO === -->
+<footer class="footer-scroll fade-up">
   <div class="scroll-container">
     <div class="scroll-content">
       <span>📱 Síguenos en nuestras redes sociales — </span>
@@ -225,15 +225,29 @@
   </div>
 </footer>
 
+<!-- === ANIMACIÓN FADE-UP === -->
 <script>
 document.addEventListener('DOMContentLoaded', function(){
   const obs = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
       if(e.isIntersecting) e.target.classList.add('show');
     });
-  }, {threshold: 0.12});
+  }, {threshold: 0.1});
   document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 });
+</script>
+
+<!-- === SCRIPT DEL MENÚ RESPONSIVE === -->
+<script>
+const toggle = document.getElementById("menu-toggle");
+const nav = document.getElementById("nav");
+
+if (toggle && nav) {
+  toggle.addEventListener("click", () => {
+    toggle.classList.toggle("active");
+    nav.classList.toggle("show");
+  });
+}
 </script>
 
 </body>
