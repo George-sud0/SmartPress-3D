@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SmartPress — Inicio</title>
+<title>SmartPress 3D — Inicio</title>
 <link rel="stylesheet" href="css/style.css">
 
 <style>
-/* === ESTILO GLOBAL === */
+/* === ESTILO GLOBAL UNIFICADO === */
 body {
   background: radial-gradient(circle at top left, #1b1b1b, #121212);
   color: #f5f5f5;
@@ -16,7 +16,6 @@ body {
   padding: 0;
 }
 
-/* === HEADER === */
 header.header {
   display: flex;
   justify-content: space-between;
@@ -24,14 +23,9 @@ header.header {
   padding: 16px 32px;
   backdrop-filter: blur(8px);
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
 }
 
-/* === LOGO === */
+/* --- LOGO MODERNO --- */
 .brand {
   display: flex;
   align-items: center;
@@ -40,18 +34,16 @@ header.header {
 .brand img {
   height: 68px;
   width: auto;
+  border-radius: 16px;
   filter: drop-shadow(0 0 8px rgba(255,255,255,0.15));
-  border-radius: 14px;
-  transform: scale(0.95);
-  opacity: 0;
-  animation: logoFade 1.5s ease forwards;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
-@keyframes logoFade {
-  0% {opacity: 0; transform: scale(0.85);}
-  100% {opacity: 1; transform: scale(1);}
+.brand img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.25));
 }
 
-/* === NAV === */
+/* --- NAVEGACIÓN --- */
 .nav a {
   color: #fff;
   text-decoration: none;
@@ -63,7 +55,7 @@ header.header {
   color: #ffb366;
 }
 
-/* === BOTONES === */
+/* --- BOTONES --- */
 .btn, .btn-accent {
   font-weight: 600;
   border-radius: 8px;
@@ -95,28 +87,7 @@ header.header {
   box-shadow: 0 6px 14px rgba(0,0,0,0.3);
 }
 
-/* === HERO === */
-.container {
-  padding: 120px 20px 40px;
-  max-width: 1100px;
-  margin: auto;
-}
-.hero {
-  display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 40px;
-  align-items: center;
-}
-.title {
-  font-size: 2.8rem;
-  margin-bottom: 16px;
-}
-.lead {
-  color: #9aa3ae;
-  font-size: 1.1rem;
-}
-
-/* === ANIMACIÓN FADE-UP === */
+/* --- ANIMACIÓN SUAVE --- */
 .fade-up {
   opacity: 0;
   transform: translateY(20px);
@@ -126,8 +97,25 @@ header.header {
   opacity: 1;
   transform: translateY(0);
 }
+.fade-up:nth-child(1) { transition-delay: 0.1s; }
+.fade-up:nth-child(2) { transition-delay: 0.2s; }
+.fade-up:nth-child(3) { transition-delay: 0.3s; }
+.fade-up:nth-child(4) { transition-delay: 0.4s; }
 
-/* === FOOTER === */
+/* --- LOGO SHOWCASE --- */
+@keyframes logoFade {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* --- ANIMACIÓN DE BRILLO SUAVE --- */
+@keyframes glowPulse {
+  0% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.2)); }
+  50% { filter: drop-shadow(0 0 40px rgba(255,255,255,0.35)); }
+  100% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.2)); }
+}
+
+/* --- FOOTER ANIMADO --- */
 .footer-scroll {
   position: relative;
   width: 100%;
@@ -136,7 +124,6 @@ header.header {
   color: white;
   border-top: 1px solid rgba(255,255,255,0.1);
   padding: 10px 0;
-  margin-top: 60px;
 }
 .scroll-container {
   white-space: nowrap;
@@ -148,7 +135,7 @@ header.header {
 .scroll-content {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
   font-size: 17px;
   font-weight: 500;
   animation: scrollRight 25s linear infinite;
@@ -175,27 +162,19 @@ header.header {
   0% { background-position: -200px 0; }
   100% { background-position: 200px 0; }
 }
-
-/* === RESPONSIVE === */
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .nav {
-    display: none;
-  }
-}
 </style>
 </head>
 
 <body>
 <header class="header">
   <div class="brand fade-up">
-    <img src="img/logo2.png" alt="SmartPress Logo">
+    <img src="img/logo.png" alt="SmartPress Logo">
     <div>
-      <div class="name">SmartPress</div>
-      <div style="font-size:12px;color:#9aa3ae">NFC • Impresión 3D • Prototipos y series cortas</div>
+      <div class="name">SmartPress 3D</div>
+      <div style="font-size:12px;color:var(--muted)">NFC • Impresión 3D • Prototipos y series cortas</div>
+    </div>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span><span></span><span></span>
     </div>
   </div>
 
@@ -204,14 +183,13 @@ header.header {
     <a href="productos.html">Productos</a>
     <a href="servicios.html">Servicios</a>
     <a href="galeria.html">Galería</a>
-    <a href="contacto.html">Contacto</a>
     <button class="btn-accent" onclick="location.href='contacto.html'">Encargar</button>
   </nav>
 </header>
 
 <main class="container">
-  <section class="hero fade-up">
-    <div class="hero-card">
+  <section class="hero fade-up" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:40px;">
+    <div class="hero-card" style="flex:1;min-width:300px;">
       <span class="kicker">Nuevo</span>
       <h1 class="title">Toca. Conecta. Crea en 3D.</h1>
       <p class="lead">Impresión NFC y 3D de nueva generación. SmartPress fusiona conectividad y fabricación aditiva: tarjetas inteligentes, llaveros y piezas impresas a medida para prototipos y producción por encargo.</p>
@@ -219,26 +197,28 @@ header.header {
         <button class="btn-accent" onclick="location.href='productos.html'">Ver productos</button>
         <button class="btn" onclick="location.href='contacto.html'">Solicitar cotización</button>
       </div>
-      <div style="margin-top:18px;color:#9aa3ae;font-size:14px">
+      <div style="margin-top:18px;color:var(--muted);font-size:14px">
         Producción rápida • Asesoría en diseño 3D • Programación NFC • Envíos y recogida local
       </div>
     </div>
 
-    <div class="showcase fade-up" style="display:flex;align-items:center;justify-content:center">
-      <img src="img/logo2.png" alt="SmartPress Logo Showcase" style="width:220px;opacity:0.8;filter:drop-shadow(0 0 20px rgba(255,255,255,0.2));border-radius:20px;animation: logoFade 1.8s ease forwards;">
+    <!-- === SHOWCASE CON LOGO NUEVO === -->
+    <div class="showcase" style="flex:1;min-width:280px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.02);border-radius:24px;padding:60px;box-shadow:0 0 30px rgba(0,0,0,0.4);">
+      <img src="img/logo2.png" alt="SmartPress Logo Showcase" 
+      style="width:300px;opacity:0.9;border-radius:20px;animation: logoFade 1.8s ease forwards, glowPulse 4s ease-in-out infinite;">
     </div>
   </section>
 
   <section class="fade-up" style="margin-top:40px;text-align:center">
     <div class="h2">Un enfoque doble: NFC + 3D</div>
     <p class="p-muted">Ofrecemos soluciones completas: desde tarjetas y stickers NFC programados, hasta piezas y prototipos impresos en 3D con acabados profesionales.</p>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <div style="display:flex;gap:12px;justify-content:center">
       <button class="btn" onclick="location.href='productos.html'">Catálogo</button>
       <button class="btn" onclick="location.href='servicios.html'">Servicios</button>
     </div>
   </section>
 
-  <div class="big-cta fade-up" style="margin-top:40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+  <div class="big-cta fade-up" style="margin-top:40px">
     <div>
       <h3>Lleva tu idea al siguiente nivel</h3>
       <div class="p-muted">Prototipos funcionales, objetos inteligentes y producción por encargo con asesoría completa.</div>
@@ -249,6 +229,7 @@ header.header {
   </div>
 </main>
 
+<!-- === FOOTER ANIMADO IGUAL AL DE CONTACTO === -->
 <footer class="footer-scroll fade-up">
   <div class="scroll-container">
     <div class="scroll-content">
@@ -262,13 +243,30 @@ header.header {
   </div>
 </footer>
 
+<!-- === ANIMACIÓN FADE-UP === -->
 <script>
 document.addEventListener('DOMContentLoaded', function(){
   const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
+    entries.forEach(e=>{
+      if(e.isIntersecting) e.target.classList.add('show');
+    });
   }, {threshold: 0.1});
   document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 });
 </script>
+
+<!-- === SCRIPT DEL MENÚ RESPONSIVE === -->
+<script>
+const toggle = document.getElementById("menu-toggle");
+const nav = document.getElementById("nav");
+
+if (toggle && nav) {
+  toggle.addEventListener("click", () => {
+    toggle.classList.toggle("active");
+    nav.classList.toggle("show");
+  });
+}
+</script>
+
 </body>
 </html>
