@@ -41,7 +41,6 @@ header.header {
   filter: drop-shadow(0 0 8px rgba(255,255,255,0.15));
   transition: transform 0.3s ease, filter 0.3s ease;
 }
-
 .brand img:hover {
   transform: scale(1.05);
   filter: drop-shadow(0 0 10px rgba(255,255,255,0.25));
@@ -98,29 +97,24 @@ header.header {
   box-shadow: 0 6px 14px rgba(0,0,0,0.3);
 }
 
-/* === MENU HAMBURGUESA (FUNCIONAL) === */
+/* === MENU HAMBURGUESA === */
 .menu-toggle {
   display: none;
   flex-direction: column;
   justify-content: center;
   gap: 6px;
   cursor: pointer;
-  position: relative;
-  z-index: 2001;
   width: 32px;
   height: 26px;
 }
-
 .menu-toggle div {
   width: 100%;
   height: 3px;
   background-color: #fff;
   border-radius: 3px;
   transition: all 0.3s ease;
-  transform-origin: center;
 }
 
-/* Animación de la X */
 .menu-toggle.active div:nth-child(1) {
   transform: rotate(45deg) translate(5px, 6px);
 }
@@ -131,7 +125,6 @@ header.header {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* NAV RESPONSIVE */
 @media (max-width: 850px) {
   .menu-toggle { display: flex; }
   .nav {
@@ -144,15 +137,8 @@ header.header {
     right: 0;
     left: 0;
     padding: 20px 0;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    animation: fadeMenu 0.3s ease;
   }
   .nav.show { display: flex; }
-}
-
-@keyframes fadeMenu {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 /* --- CONTENEDOR --- */
@@ -172,63 +158,23 @@ form input, form textarea {
   padding: 12px;
   margin-bottom: 12px;
   font-size: 15px;
-  transition: border 0.2s ease;
 }
 form input:focus, form textarea:focus {
   border-color: #ff9f43;
-  outline: none;
-}
-form textarea {
-  min-height: 100px;
-  resize: vertical;
 }
 
 /* --- FOOTER --- */
 .footer-scroll {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
   background: #0a0a0a;
-  color: white;
-  border-top: 1px solid rgba(255,255,255,0.1);
   padding: 10px 0;
-}
-.scroll-container {
-  white-space: nowrap;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .scroll-content {
   display: inline-flex;
-  align-items: center;
-  gap: 18px;
-  font-size: 17px;
-  font-weight: 500;
   animation: scrollRight 25s linear infinite;
 }
-.scroll-content span {
-  background: linear-gradient(90deg, #fff, #999, #fff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200%;
-  animation: shimmer 4s linear infinite;
-}
-.icon {
-  width: 22px;
-  height: 22px;
-  filter: invert(1);
-  vertical-align: middle;
-}
-
 @keyframes scrollRight {
   from { transform: translateX(-100%); }
   to { transform: translateX(100%); }
-}
-@keyframes shimmer {
-  0% { background-position: -200px 0; }
-  100% { background-position: 200px 0; }
 }
 </style>
 </head>
@@ -245,7 +191,6 @@ form textarea {
     </div>
   </div>
 
-  <!-- 🔹 BOTÓN HAMBURGUESA -->
   <div id="menu-toggle" class="menu-toggle">
     <div></div><div></div><div></div>
   </div>
@@ -263,14 +208,17 @@ form textarea {
 <main class="container fade-up">
   <section>
     <h2>Contacto & Encargos</h2>
-    <p class="p-muted">Cuéntanos tu idea (NFC, 3D o ambos) y te responderemos con presupuesto y tiempos.</p>
+    <p class="p-muted">Cuéntanos tu idea y te responderemos con presupuesto y tiempos.</p>
 
-    <form id="contact-form" style="max-width:900px;margin:0 auto;">
+    <form id="contact-form">
       <input required placeholder="Nombre / Empresa" name="nombre">
       <input required type="email" placeholder="Correo electrónico" name="email">
       <input placeholder="Teléfono (opcional)" name="telefono">
-      <input placeholder="Producto principal (ej: llavero NFC / pieza 3D)" name="producto">
-      <textarea placeholder="Describe tu proyecto: materiales, cantidad, uso, fecha" name="mensaje"></textarea>
+
+      <!-- 🔥 Aquí se rellena solo -->
+      <input placeholder="Producto principal" name="producto" id="producto">
+
+      <textarea placeholder="Describe tu proyecto" name="mensaje"></textarea>
 
       <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:14px">
         <button class="btn" type="button" onclick="location.href='mailto:contacto@smartpress.mx'">Escribir a correo</button>
@@ -283,17 +231,15 @@ form textarea {
 <footer class="footer-scroll fade-up">
   <div class="scroll-container">
     <div class="scroll-content">
-      <span>📱 Síguenos en nuestras redes sociales — </span>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="icon" alt="Instagram">
-      <span>@smart_press3d</span>
-      <span>📱 Síguenos en nuestras redes sociales — </span>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="icon" alt="Instagram">
+      <span>📱 Síguenos — </span>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="icon">
       <span>@smart_press3d</span>
     </div>
   </div>
 </footer>
 
 <script>
+/* === ANIMACIONES === */
 document.addEventListener('DOMContentLoaded', function(){
   const obs = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
@@ -303,51 +249,49 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 });
 
-// 🔹 Toggle del menú responsive
+/* === MENÚ === */
 const toggle = document.getElementById("menu-toggle");
 const nav = document.getElementById("nav");
+
 toggle.addEventListener("click", () => {
   toggle.classList.toggle("active");
   nav.classList.toggle("show");
 });
 
-// 🔹 Cierra el menú al seleccionar una opción
-document.querySelectorAll('.nav a').forEach(link => {
-  link.addEventListener('click', () => {
-    toggle.classList.remove('active');
-    nav.classList.remove('show');
-  });
-});
-</script>
+/* === AUTORELLENO DE PRODUCTO DESDE productos.html === */
+const params = new URLSearchParams(window.location.search);
+if (params.has("producto")) {
+  document.getElementById("producto").value = params.get("producto");
+}
 
-<!-- Supabase -->
-<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-<script>
+/* === SUPABASE === */
 const SUPABASE_URL = "https://pbglzegtqenndqbsjjjf.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBiZ2x6ZWd0cWVubmRxYnNqampmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI3MzUwOTMsImV4cCI6MjA3ODMxMTA5M30.GMH5D_YWDFSGrXDFeZ_a4OkZ-zk0mJx95ciEL98q894";
 
-const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 document.getElementById("contact-form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const form = e.target;
-  const nombre = form.nombre.value;
-  const email = form.email.value;
-  const telefono = form.telefono.value;
-  const producto = form.producto.value;
-  const mensaje = form.mensaje.value;
 
-  const { error } = await supabaseClient
-    .from("usuarios")
-    .insert([{ nombre, email, telefono, producto, mensaje }]);
+  const data = {
+    nombre: form.nombre.value,
+    email: form.email.value,
+    telefono: form.telefono.value,
+    producto: form.producto.value,
+    mensaje: form.mensaje.value
+  };
+
+  const { error } = await supabaseClient.from("usuarios").insert([data]);
 
   if (error) {
-    alert("Uy, parece que hubo un error. Favor de intentar de nuevo: " + error.message);
+    alert("Error: " + error.message);
   } else {
-    alert("Nos estaremos contactando contigo dentro de los próximos 30 min a 1 hora.");
+    alert("Gracias. Te contactaremos muy pronto.");
     form.reset();
   }
 });
 </script>
+
 </body>
 </html>
