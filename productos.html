@@ -16,7 +16,7 @@
   .fade-up.show { opacity: 1; transform: translateY(0); }
 
   /* --- Botones --- */
-  .btn-accent {
+  .btn-accent, .btn-cotizacion {
     background: linear-gradient(135deg, #ff5c5c, #ff9f43);
     border: none;
     color: #fff;
@@ -25,9 +25,11 @@
     cursor: pointer;
     font-weight: 600;
     width: 100%;
+    text-align: center;
+    display: block;
     transition: .25s;
   }
-  .btn-accent:hover {
+  .btn-accent:hover, .btn-cotizacion:hover {
     background: linear-gradient(135deg, #ff7a7a, #ffb366);
     transform: translateY(-2px);
   }
@@ -88,16 +90,6 @@
     transform: translateY(-4px);
     box-shadow: 0 6px 18px rgba(0,0,0,0.35);
   }
-
-  .product-price {
-    font-size: 22px;
-    font-weight: 700;
-    margin: 8px 0 16px 0;
-    background: linear-gradient(135deg, #ff7a7a, #ffb366);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
   .product-card ul {
     padding-left: 18px;
     margin-top: 10px;
@@ -106,6 +98,13 @@
   .product-card li {
     margin-bottom: 8px;
     color: #ddd;
+  }
+
+  .precio {
+    color: #ffb366;
+    font-size: 20px;
+    margin: 5px 0 10px;
+    font-weight: 700;
   }
 
   /* --- Footer --- */
@@ -162,107 +161,109 @@
 <main class="container fade-up">
 
   <h2 style="font-size:30px;margin-bottom:10px;">Productos inteligentes & 3D</h2>
-  <p class="p-muted" style="color:#ccc;margin-bottom:20px;">
+  <p style="color:#ccc;margin-bottom:20px;">
     Catálogo de productos con NFC, accesorios personalizados y piezas impresas en 3D listas para producción.
   </p>
 
-  <!-- ===== GRID COMPLETA ===== -->
+  <!-- =========================
+          PRODUCTOS COMPLETOS
+  ========================== -->
   <section class="products-grid">
 
     <!-- Tarjetas NFC -->
     <article class="product-card">
       <h3>Tarjetas NFC</h3>
 
-      <!-- ⭐ AQUI CAMBIAS EL PRECIO ⭐ -->
-      <div class="product-price">$50 MXN c/u</div>
+      <!-- CAMBIAR PRECIO AQUÍ -->
+      <p class="precio">$120 MXN c/u</p>
 
       <p>Solución ideal para negocios, creadores y eventos que necesitan compartir información al instante.</p>
       <ul>
-        <li><strong>PVC premium resistente</strong></li>
-        <li><strong>Programación incluida</strong> (URL, vCard, menú…)</li>
-        <li><strong>Compatibles con todos los smartphones</strong></li>
+        <li>PVC premium resistente</li>
+        <li>Programación incluida</li>
+        <li>Compatibles con todos los smartphones</li>
       </ul>
-      <button class="btn-accent" onclick="location.href='contacto.html'">Solicitar cotización</button>
+      <a class="btn-cotizacion" href="contacto.html?producto=Tarjeta%20NFC">Solicitar cotización</a>
     </article>
 
     <!-- Stickers NFC -->
     <article class="product-card">
       <h3>Stickers NFC</h3>
 
-      <!-- ⭐ AQUI CAMBIAS EL PRECIO ⭐ -->
-      <div class="product-price">$25 MXN c/u</div>
+      <!-- CAMBIAR PRECIO AQUÍ -->
+      <p class="precio">$30 MXN c/u</p>
 
       <p>Perfectos para activaciones, promociones y automatizaciones con un solo toque.</p>
       <ul>
-        <li><strong>Adhesivo fuerte y duradero</strong></li>
-        <li><strong>Programables con cualquier acción</strong></li>
-        <li><strong>Ideales para marketing interactivo</strong></li>
+        <li>Adhesivo fuerte y duradero</li>
+        <li>Programables con cualquier acción</li>
+        <li>Ideales para marketing interactivo</li>
       </ul>
-      <button class="btn-accent" onclick="location.href='contacto.html'">Solicitar cotización</button>
+      <a class="btn-cotizacion" href="contacto.html?producto=Sticker%20NFC">Solicitar cotización</a>
     </article>
 
     <!-- Llaveros NFC -->
     <article class="product-card">
       <h3>Llaveros NFC</h3>
 
-      <!-- ⭐ AQUI CAMBIAS EL PRECIO ⭐ -->
-      <div class="product-price">$80 MXN c/u</div>
+      <!-- CAMBIAR PRECIO AQUÍ -->
+      <p class="precio">$80 MXN c/u</p>
 
       <p>Diseñados para membresías, accesos y compartir redes sociales fácilmente.</p>
       <ul>
-        <li><strong>Material resistente para uso diario</strong></li>
-        <li><strong>Personalización a color</strong></li>
-        <li><strong>Compatibles con iPhone y Android</strong></li>
+        <li>Material resistente para uso diario</li>
+        <li>Personalización a color</li>
+        <li>Compatibles con iPhone y Android</li>
       </ul>
-      <button class="btn-accent" onclick="location.href='contacto.html'">Solicitar cotización</button>
+      <a class="btn-cotizacion" href="contacto.html?producto=Llavero%20NFC">Solicitar cotización</a>
     </article>
 
     <!-- Figuras 3D -->
     <article class="product-card">
       <h3>Figuras & Prototipos 3D</h3>
 
-      <!-- ⭐ AQUI CAMBIAS EL PRECIO ⭐ -->
-      <div class="product-price">Desde $120 MXN</div>
+      <!-- CAMBIAR PRECIO AQUÍ -->
+      <p class="precio">Desde $150 MXN</p>
 
       <p>Servicio orientado a piezas decorativas y prototipos rápidos para proyectos.</p>
       <ul>
-        <li><strong>Impresión en PLA, PETG o resina</strong></li>
-        <li><strong>Alta precisión en detalles</strong></li>
-        <li><strong>Acabados personalizables</strong></li>
+        <li>Impresión en PLA, PETG o resina</li>
+        <li>Alta precisión en detalles</li>
+        <li>Acabados personalizables</li>
       </ul>
-      <button class="btn-accent" onclick="location.href='contacto.html'">Solicitar cotización</button>
+      <a class="btn-cotizacion" href="contacto.html?producto=Figuras%20y%20Prototipos">Solicitar cotización</a>
     </article>
 
     <!-- Piezas Funcionales -->
     <article class="product-card">
       <h3>Piezas Funcionales 3D</h3>
 
-      <!-- ⭐ AQUI CAMBIAS EL PRECIO ⭐ -->
-      <div class="product-price">Desde $150 MXN</div>
+      <!-- CAMBIAR PRECIO AQUÍ -->
+      <p class="precio">Desde $200 MXN</p>
 
       <p>Componentes robustos para proyectos técnicos y mecánicos.</p>
       <ul>
-        <li><strong>Tolerancias controladas</strong></li>
-        <li><strong>Materiales resistentes</strong></li>
-        <li><strong>Producción desde una sola pieza</strong></li>
+        <li>Tolerancias controladas</li>
+        <li>Materiales resistentes</li>
+        <li>Producción desde una sola pieza</li>
       </ul>
-      <button class="btn-accent" onclick="location.href='contacto.html'">Solicitar cotización</button>
+      <a class="btn-cotizacion" href="contacto.html?producto=Piezas%20Funcionales%203D">Solicitar cotización</a>
     </article>
 
     <!-- Merch -->
     <article class="product-card">
       <h3>Merch & Accesorios</h3>
 
-      <!-- ⭐ AQUI CAMBIAS EL PRECIO ⭐ -->
-      <div class="product-price">Desde $40 MXN</div>
+      <!-- CAMBIAR PRECIO AQUÍ -->
+      <p class="precio">Desde $50 MXN</p>
 
       <p>Productos personalizados para negocios, marcas y eventos.</p>
       <ul>
-        <li><strong>Soportes, llaveros y accesorios</strong></li>
-        <li><strong>Personalización completa</strong></li>
-        <li><strong>Ideales para retail o branding</strong></li>
+        <li>Soportes, llaveros y accesorios</li>
+        <li>Personalización completa</li>
+        <li>Ideales para retail o branding</li>
       </ul>
-      <button class="btn-accent" onclick="location.href='contacto.html'">Solicitar cotización</button>
+      <a class="btn-cotizacion" href="contacto.html?producto=Merch%20Accesorios">Solicitar cotización</a>
     </article>
 
   </section>
