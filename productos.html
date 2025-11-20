@@ -6,7 +6,6 @@
 <title>SmartPress 3D — Productos</title>
 <link rel="stylesheet" href="css/style.css">
 
-
 <style>
   /* --- Animación suave al aparecer --- */
   .fade-up {
@@ -134,7 +133,36 @@
     box-shadow: 0 6px 14px rgba(0,0,0,0.3);
   }
 
-  /* --- Footer Moderno y Animado (igual al index) --- */
+  /* --- Sección extra --- */
+  .info-section {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+  }
+
+  .info-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+
+  .info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+  }
+
+  /* --- Footer --- */
   footer {
     background: #0a0a0a;
     border-top: 1px solid rgba(255,255,255,0.1);
@@ -182,21 +210,21 @@
     from { transform: translateX(-100%); }
     to { transform: translateX(100%); }
   }
-
   @keyframes shimmer {
     0% { background-position: -200px 0; }
     100% { background-position: 200px 0; }
   }
 </style>
+</head>
+
+<body>
+
 <header class="header">
   <div class="brand fade-up">
     <img src="logo.png" alt="SmartPress Logo">
     <div>
       <div class="name">SmartPress 3D</div>
       <div style="font-size:12px;color:var(--muted)">NFC • Impresión 3D • Prototipos y series cortas</div>
-    </div>
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span><span></span><span></span>
     </div>
   </div>
 
@@ -213,44 +241,63 @@
   <section class="fade-up">
     <div class="h2">Productos inteligentes & 3D</div>
     <p class="p-muted">Catálogo de productos: tarjetas y stickers NFC, llaveros, accesorios y piezas impresas en 3D.</p>
+    
     <div class="grid-3">
-      <div class="card">
-        <h3>Tarjetas NFC</h3>
-        <p class="p-muted">Tarjetas PVC premium, personalizadas y programadas con URL, vCard o acciones.</p>
-      </div>
-      <div class="card">
-        <h3>Stickers NFC</h3>
-        <p class="p-muted">Adhesivos para promociones, packaging y activaciones inteligentes.</p>
-      </div>
-      <div class="card">
-        <h3>Llaveros NFC</h3>
-        <p class="p-muted">Diseños resistentes y personalizables para membresías y eventos.</p>
-      </div>
-      <div class="card">
-        <h3>Figuras & Prototipos 3D</h3>
-        <p class="p-muted">Figuras y prototipos impresos en PLA, PETG o resina según necesidad.</p>
-      </div>
-      <div class="card">
-        <h3>Piezas Funcionales 3D</h3>
-        <p class="p-muted">Componentes técnicos y piezas finales con tolerancias controladas.</p>
-      </div>
-      <div class="card">
-        <h3>Merch y Accesorios</h3>
-        <p class="p-muted">Merchandising personalizado, soportes y accesorios para retail.</p>
-      </div>
+      <div class="card"><h3>Tarjetas NFC</h3><p class="p-muted">Tarjetas PVC premium, personalizadas y programadas con URL, vCard o acciones.</p></div>
+      <div class="card"><h3>Stickers NFC</h3><p class="p-muted">Adhesivos para promociones, packaging y activaciones inteligentes.</p></div>
+      <div class="card"><h3>Llaveros NFC</h3><p class="p-muted">Diseños resistentes y personalizables para membresías y eventos.</p></div>
+      <div class="card"><h3>Figuras & Prototipos 3D</h3><p class="p-muted">Figuras y prototipos impresos en PLA, PETG o resina según necesidad.</p></div>
+      <div class="card"><h3>Piezas Funcionales 3D</h3><p class="p-muted">Componentes técnicos y piezas finales con tolerancias controladas.</p></div>
+      <div class="card"><h3>Merch y Accesorios</h3><p class="p-muted">Merchandising personalizado, soportes y accesorios para retail.</p></div>
     </div>
   </section>
 </main>
 
-<!-- === FOOTER ANIMADO IGUAL AL DE CONTACTO === -->
+<!-- ========================= -->
+<!-- SECCIÓN EXTRA PROFESIONAL -->
+<!-- ========================= -->
+
+<section class="info-section fade-up">
+
+  <h2 style="font-size:32px;font-weight:600;">¿Por qué elegir SmartPress 3D?</h2>
+  <p style="opacity:0.8;max-width:750px;margin:10px auto 40px;">
+    Productos NFC y piezas impresas en 3D con materiales premium, acabados profesionales y procesos eficientes.
+  </p>
+
+  <div class="info-grid">
+    <div class="info-card"><h3>✔ Calidad Profesional</h3><p>Modelos precisos, alta resistencia y acabados premium.</p></div>
+    <div class="info-card"><h3>✔ Personalización Total</h3><p>Programación NFC, diseños a medida y opciones de color.</p></div>
+    <div class="info-card"><h3>✔ Entregas Rápidas</h3><p>Fabricación optimizada y envíos a todo México.</p></div>
+  </div>
+
+  <h2 style="font-size:28px;font-weight:600;margin-top:60px;">¿Cómo trabajamos?</h2>
+  <div class="info-grid">
+    <div class="info-card"><h3>1. Diseño</h3><p>Creamos el modelo o arte según tu proyecto.</p></div>
+    <div class="info-card"><h3>2. Aprobación</h3><p>Vista previa antes de producir.</p></div>
+    <div class="info-card"><h3>3. Fabricación</h3><p>Impresión 3D con materiales premium.</p></div>
+    <div class="info-card"><h3>4. Programación NFC</h3><p>Links, redes sociales, vCards y más.</p></div>
+    <div class="info-card"><h3>5. Envío</h3><p>Entrega rápida y segura.</p></div>
+  </div>
+
+  <h2 style="font-size:28px;font-weight:600;margin-top:60px;">Materiales y Tecnologías</h2>
+  <div class="info-grid">
+    <div class="info-card"><h3>PLA / PLA+</h3><p>Material ligero, resistente y económico.</p></div>
+    <div class="info-card"><h3>PETG</h3><p>Alta resistencia térmica y mecánica.</p></div>
+    <div class="info-card"><h3>Resina UV</h3><p>Detalles finos y acabados superiores.</p></div>
+    <div class="info-card"><h3>Chips NFC</h3><p>Programación funcional y segura.</p></div>
+  </div>
+
+</section>
+
+<!-- === FOOTER ANIMADO === -->
 <footer class="footer-scroll fade-up">
   <div class="scroll-container">
     <div class="scroll-content">
       <span>📱 Síguenos en nuestras redes sociales — </span>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="icon" alt="Instagram">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="icon">
       <span>@smart_press3d</span>
       <span>📱 Síguenos en nuestras redes sociales — </span>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="icon" alt="Instagram">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="icon">
       <span>@smart_press3d</span>
     </div>
   </div>
@@ -268,110 +315,5 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 </script>
 
-<!-- === SCRIPT DEL MENÚ RESPONSIVE === -->
-<script>
-const toggle = document.getElementById("menu-toggle");
-const nav = document.getElementById("nav");
-
-if (toggle && nav) {
-  toggle.addEventListener("click", () => {
-    toggle.classList.toggle("active");
-    nav.classList.toggle("show");
-  });
-}
-</script>
-
-<!-- Sección Informativa SmartPress 3D -->
-<section style="padding: 60px 20px; text-align:center; color:white; max-width:1100px; margin:auto;">
-
-    <h2 style="font-size: 32px; margin-bottom: 15px; font-weight:600;">¿Por qué elegir SmartPress 3D?</h2>
-    <p style="font-size: 17px; margin-bottom: 40px; opacity:0.8;">
-        Ofrecemos productos NFC y piezas impresas en 3D con calidad profesional, materiales premium y procesos eficientes.
-    </p>
-
-    <!-- Beneficios -->
-    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:25px; margin-bottom:60px;">
-
-        <div style="background:#1a1a1a; padding:25px; border-radius:15px;">
-            <h3 style="margin-bottom:10px;">✔ Calidad Profesional</h3>
-            <p style="opacity:0.8;">Modelos precisos, impresiones nítidas y piezas duraderas listas para uso real.</p>
-        </div>
-
-        <div style="background:#1a1a1a; padding:25px; border-radius:15px;">
-            <h3 style="margin-bottom:10px;">✔ Personalización Total</h3>
-            <p style="opacity:0.8;">Diseños únicos, colores personalizados y programación NFC incluida.</p>
-        </div>
-
-        <div style="background:#1a1a1a; padding:25px; border-radius:15px;">
-            <h3 style="margin-bottom:10px;">✔ Entregas Rápidas</h3>
-            <p style="opacity:0.8;">Producción optimizada para entregas urgentes y envíos a todo México.</p>
-        </div>
-
-    </div>
-
-    <!-- Proceso de Trabajo -->
-    <h2 style="font-size: 28px; margin-bottom:20px; font-weight:600;">¿Cómo trabajamos?</h2>
-
-    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap:25px; margin-bottom:60px;">
-
-        <div style="background:#1a1a1a; padding:25px; border-radius:15px;">
-            <h3 style="margin-bottom:10px;">1. Diseño</h3>
-            <p style="opacity:0.8;">Creamos el modelo de tu llave, tarjeta o pieza 3D.</p>
-        </div>
-
-        <div style="background:#1a1a1a; padding:25px; border-radius:15px;">
-            <h3 style="margin-bottom:10px;">2. Aprobación</h3>
-            <p style="opacity:0.8;">Te enviamos vista previa para confirmar colores y estilo.</p>
-        </div>
-
-        <div style="background:#1a1a1a; padding:25px; border-radius:15px;">
-            <h3 style="margin-bottom:10px;">3. Fabricación</h3>
-            <p style="opacity:0.8;">Impresión 3D con materiales de alta calidad.</p>
-        </div>
-
-        <div style="background:#1a1a1a; padding:25px; border-radius:15px;">
-            <h3 style="margin-bottom:10px;">4. Programación NFC</h3>
-            <p style="opacity:0.8;">Configuramos URL, redes sociales o vCard.</p>
-        </div>
-
-        <div style="background:#1a1a1a; padding:25px; border-radius:15px;">
-            <h3 style="margin-bottom:10px;">5. Envío o Entrega</h3>
-            <p style="opacity:0.8;">Recibe tu pedido en cualquier parte de México.</p>
-        </div>
-
-    </div>
-
-    <!-- Materiales y Tecnologías -->
-    <h2 style="font-size: 28px; margin-bottom:20px; font-weight:600;">Materiales y Tecnologías</h2>
-
-    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:25px;">
-
-        <div style="background:#1a1a1a; padding:25px; border-radius:15px;">
-            <h3 style="margin-bottom:10px;">PLA / PLA+</h3>
-            <p style="opacity:0.8;">Material fuerte, ligero y con acabados de alta calidad.</p>
-        </div>
-
-        <div style="background:#1a1a1a; padding:25px; border-radius:15px;">
-            <h3 style="margin-bottom:10px;">PETG</h3>
-            <p style="opacity:0.8;">Alta resistencia térmica y mecánica para piezas duraderas.</p>
-        </div>
-
-        <div style="background:#1a1a1a; padding:25px; border-radius:15px;">
-            <h3 style="margin-bottom:10px;">Resina UV</h3>
-            <p style="opacity:0.8;">Perfecta para detalles finos y modelos de alta precisión.</p>
-        </div>
-
-        <div style="background:#1a1a1a; padding:25px; border-radius:15px;">
-            <h3 style="margin-bottom:10px;">Tarjetas & Chips NFC</h3>
-            <p style="opacity:0.8;">Programación para redes sociales, links, acciones y más.</p>
-        </div>
-
-    </div>
-
-</section>
-
-  
 </body>
 </html>
-
-
